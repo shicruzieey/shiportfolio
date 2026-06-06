@@ -19,14 +19,44 @@
     --text-color: #B8AC99;
     --text-muted: #8A7F70;
     --text-light: #5C5348;
+    --text-heading: #E8DDD0;
     
     --border-color: #2A2A2A;
+    --card-bg: #1A1A1A;
+    --card-hover-shadow: rgba(0, 0, 0, 0.4);
+    --grid-dot-color: rgba(255, 255, 255, 0.15);
+    --header-bg: rgba(13, 13, 13, 0.9);
+    --input-bg: #1A1A1A;
     
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Outfit', sans-serif;
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.15s ease-in-out;
+}
+
+:root.light-theme {
+    --bg-color: #F8F9FA;
+    --bg-alt: #FFFFFF;
+    --footer-bg: #111111;
+    
+    --text-color: #333333;
+    --text-muted: #555555;
+    --text-light: #777777;
+    --text-heading: #0D0D0D;
+    
+    --border-color: #E2E8F0;
+    --card-bg: #FFFFFF;
+    --card-hover-shadow: rgba(0, 0, 0, 0.05);
+    --grid-dot-color: rgba(235, 89, 57, 0.1);
+    --header-bg: rgba(255, 255, 255, 0.9);
+    --input-bg: #F1F3F5;
+    
+    --primary-light: #FFF0ED;
+    --primary-border: #FFD2C9;
+    
+    --experience-border: #EB5939;
+    --experience-bg: #FFF0ED;
 }
 
 /* 2. Global Resets */
@@ -57,7 +87,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-weight: 700;
     line-height: 1.25;
-    color: #E8DDD0;
+    color: var(--text-heading);
 }
 
 p {
@@ -109,9 +139,9 @@ a {
 
 /* White bg, dark text */
 .btn-white {
-    background-color: #1A1A1A;
-    color: #E8DDD0;
-    border-color: transparent;
+    background-color: var(--card-bg);
+    color: var(--text-heading);
+    border-color: var(--border-color);
 }
 
 .btn-white:hover {
@@ -120,9 +150,9 @@ a {
 
 /* Black bg, purple text */
 .btn-dark {
-    background-color: #E8DDD0;
-    color: var(--primary-color);
-    border-color: #E8DDD0;
+    background-color: var(--text-heading);
+    color: var(--bg-color);
+    border-color: var(--text-heading);
 }
 
 .btn-dark:hover {
@@ -150,13 +180,13 @@ a {
 /* Transparent, dark border, dark text */
 .btn-outline {
     background-color: transparent;
-    color: #E8DDD0;
-    border-color: #E8DDD0;
+    color: var(--text-heading);
+    border-color: var(--text-heading);
 }
 
 .btn-outline:hover {
-    background-color: #E8DDD0;
-    color: var(--primary-color);
+    background-color: var(--text-heading);
+    color: var(--bg-color);
 }
 
 /* 4. Header & Navigation */
@@ -166,7 +196,7 @@ a {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(13, 13, 13, 0.9);
+    background-color: var(--header-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
@@ -194,6 +224,11 @@ a {
     height: 28px;
     display: block;
     object-fit: contain;
+    transition: filter 0.3s ease;
+}
+
+:root.light-theme .logo-img {
+    filter: brightness(0);
 }
 
 .nav-menu {
@@ -256,7 +291,7 @@ a {
     position: relative;
     padding-top: 150px;
     padding-bottom: 100px;
-    background-color: #141414;
+    background-color: var(--bg-alt);
     overflow: hidden;
 }
 
@@ -266,7 +301,7 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(circle, rgba(184,172,153,0.18) 1px, transparent 1px);
+    background-image: radial-gradient(circle, var(--grid-dot-color) 1px, transparent 1px);
     background-size: 24px 24px;
     z-index: 1;
 }
@@ -284,14 +319,14 @@ a {
     font-size: 4.5rem;
     font-weight: 800;
     letter-spacing: -0.04em;
-    color: #E8DDD0;
+    color: var(--text-heading);
     margin-bottom: 0.5rem;
 }
 
 .hero-subtitle {
     font-size: 1.85rem;
     font-weight: 600;
-    color: #8A7F70;
+    color: var(--text-muted);
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
 }
@@ -311,7 +346,7 @@ a {
 /* 6. About Section */
 .about-section {
     padding: 60px 0 0 0;
-    background-color: #161616;
+    background-color: var(--bg-alt);
     overflow: hidden;
 }
 
@@ -347,7 +382,7 @@ a {
 .about-text {
     font-size: 1.05rem;
     line-height: 1.7;
-    color: #8A7F70;
+    color: var(--text-muted);
 }
 
 .about-text strong,
@@ -359,7 +394,7 @@ a {
 /* 7. Job Experience Section */
 .experience-section {
     padding: 100px 0;
-    background-color: #1A1A1A;
+    background-color: var(--card-bg);
 }
 
 .experience-list {
@@ -389,7 +424,7 @@ a {
 .exp-meta {
     font-size: 0.95rem;
     font-weight: 400;
-    color: #E8DDD0;
+    color: var(--text-heading);
     margin-bottom: 0.5rem;
 }
 
@@ -402,7 +437,7 @@ a {
 /* 8. Open to Work Section */
 .work-status-section {
     padding: 100px 0;
-    background-color: #161616;
+    background-color: var(--bg-alt);
 }
 
 .work-status-grid {
@@ -413,7 +448,7 @@ a {
 }
 
 .work-status-card {
-    background-color: #1A1A1A;
+    background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 2.5rem 2rem;
@@ -443,7 +478,7 @@ a {
 .work-title {
     font-size: 1.1rem;
     font-weight: 700;
-    color: #E8DDD0;
+    color: var(--text-heading);
     margin-bottom: 0.75rem;
 }
 
@@ -474,7 +509,7 @@ a {
 /* 9. Projects List Section */
 .projects-section {
     padding: 100px 0;
-    background-color: #1A1A1A;
+    background-color: var(--card-bg);
 }
 
 .project-group {
@@ -514,7 +549,7 @@ a {
     width: 100%;
     height: 280px;
     overflow: hidden;
-    background-color: #1A1A1A;
+    background-color: var(--card-bg);
     margin-bottom: 1.25rem;
 }
 
@@ -548,7 +583,7 @@ a {
 .project-title {
     font-size: 1rem;
     font-weight: 700;
-    color: #E8DDD0;
+    color: var(--text-heading);
     letter-spacing: 0.01em;
     margin-bottom: 0.75rem;
     line-height: 1.4;
@@ -581,7 +616,7 @@ a {
 /* 10. Skills Section */
 .skills-section {
     padding: 100px 0;
-    background-color: #161616;
+    background-color: var(--bg-alt);
 }
 
 .section-subtitle {
@@ -600,7 +635,7 @@ a {
 }
 
 .skill-card {
-    background-color: #1A1A1A;
+    background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     aspect-ratio: 1 / 1;
@@ -653,7 +688,7 @@ a {
 /* 11. Achievements Section */
 .achievements-section {
     padding: 100px 0;
-    background-color: #1A1A1A;
+    background-color: var(--card-bg);
     border-top: 1px solid var(--border-color);
 }
 
@@ -694,7 +729,7 @@ a {
 .edu-school {
     font-size: 0.95rem;
     font-weight: 600;
-    color: #E8DDD0;
+    color: var(--text-heading);
 }
 
 .edu-award {
@@ -763,7 +798,7 @@ a {
 .cert-name {
     font-size: 0.875rem;
     font-weight: 600;
-    color: #E8DDD0;
+    color: var(--text-heading);
     line-height: 1.3;
 }
 
@@ -808,6 +843,7 @@ a {
 .contact-item {
     font-size: 0.95rem;
     color: #94A3B8;
+    word-break: break-all;
 }
 
 .contact-item a {
@@ -871,6 +907,10 @@ a {
         font-size: 3.5rem;
     }
     
+    .about-section {
+        padding: 60px 0;
+    }
+    
     .about-container {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -879,6 +919,10 @@ a {
     .about-image-wrapper {
         max-width: 400px;
         margin: 0 auto;
+    }
+    
+    .about-content {
+        padding-bottom: 0;
     }
     
     .experience-list {
@@ -910,6 +954,11 @@ a {
         font-size: 2rem;
     }
     
+    .hero-section {
+        padding-top: 120px;
+        padding-bottom: 60px;
+    }
+    
     .hero-title {
         font-size: 3rem;
     }
@@ -918,13 +967,22 @@ a {
         font-size: 1.4rem;
     }
     
+    .about-portrait {
+        max-height: 380px;
+    }
+    
+    .project-thumbnail {
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+    
     .nav-menu {
         position: fixed;
         top: 70px;
         right: -100%;
         width: 80%;
         height: calc(100vh - 70px);
-        background-color: #1A1A1A;
+        background-color: var(--card-bg);
         flex-direction: column;
         justify-content: flex-start;
         padding: 3rem 2rem;
@@ -942,27 +1000,11 @@ a {
         display: flex;
     }
     
-    .hamburger-menu.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    
-    .hamburger-menu.active .bar:nth-child(2) {
-        transform: translateY(-8px) rotate(-45deg);
-        width: 25px;
-    }
-    
-    .hamburger-menu.active .bar:nth-child(2) {
-        /* If there are 3 lines, hides middle. Since we have 2, wait:
-           Our hamburger had 2 lines. 
-           We had bar 1 and bar 2.
-           Let's style the two lines to cross!
-        */
-    }
-    
-    /* Cross for 2 lines: */
+    /* Cross animation for 2-bar hamburger menu */
     .hamburger-menu.active .bar:nth-child(1) {
         transform: translateY(4px) rotate(45deg);
     }
+    
     .hamburger-menu.active .bar:nth-child(2) {
         transform: translateY(-4px) rotate(-45deg);
     }
@@ -972,17 +1014,35 @@ a {
         gap: 2.5rem;
     }
     
+    .social-links {
+        flex-wrap: wrap;
+    }
+    
     .skills-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
     }
     
+    .skill-card::after {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .skill-card .skill-logo {
+        transform: translateY(-6px) scale(0.95);
+    }
+    
     .project-actions {
         flex-wrap: wrap;
     }
+    
+    #theme-toggle {
+        margin: 1.5rem auto 0 auto;
+        align-self: center;
+    }
 }
 
-/* Small Mobile (max-width: 480px) { */
+/* Small Mobile (max-width: 480px) */
 @media (max-width: 480px) {
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -991,5 +1051,58 @@ a {
     .hero-title {
         font-size: 2.5rem;
     }
+}
+
+/* Theme Toggle Button */
+
+.theme-toggle-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-heading);
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: var(--transition-smooth);
+    margin-left: -1rem;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.theme-toggle-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: var(--primary-light);
+}
+
+.theme-toggle-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle-btn:hover svg {
+    transform: rotate(15deg);
+}
+
+/* Icon toggling behavior */
+.theme-icon-sun {
+    display: block;
+}
+.theme-icon-moon {
+    display: none;
+}
+
+:root.light-theme .theme-icon-sun {
+    display: none;
+}
+:root.light-theme .theme-icon-moon {
+    display: block;
+}
+
+/* Adjust hamburger menu icon on light theme */
+:root.light-theme .hamburger-menu .bar {
+    background-color: var(--text-heading);
 }
 

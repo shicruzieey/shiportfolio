@@ -9,7 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     initMobileMenu();
     initScrollReveal();
+    initThemeToggle();
 });
+
+/**
+ * Theme Toggle Functionality (persisted in localStorage)
+ */
+function initThemeToggle() {
+    const toggleButtons = document.querySelectorAll('#theme-toggle');
+    toggleButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const isLight = document.documentElement.classList.toggle('light-theme');
+            localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+        });
+    });
+}
 
 /**
  * Mobile Navigation Menu Toggle and Link Actions
