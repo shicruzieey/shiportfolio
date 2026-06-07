@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initScrollReveal();
     initThemeToggle();
+    initGalleryCarousel();
 });
 
 /**
@@ -106,3 +107,21 @@ document.addEventListener('DOMContentLoaded', () => {
         viewMoreBtn.textContent = isHidden ? 'View Less' : 'View More';
     });
 });
+
+/**
+ * Gallery Carousel
+ */
+function initGalleryCarousel() {
+    const track = document.getElementById('gallery-track');
+    if (!track) return;
+
+    const scrollAmount = 280;
+
+    document.querySelector('.gallery-prev')?.addEventListener('click', () => {
+        track.parentElement.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    document.querySelector('.gallery-next')?.addEventListener('click', () => {
+        track.parentElement.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+}
