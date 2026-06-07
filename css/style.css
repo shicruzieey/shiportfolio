@@ -1180,3 +1180,14 @@ a {
     background-color: var(--text-heading);
 }
 
+
+/* Invert dark icons in dark mode for visibility */
+.skill-card[data-skill="GitHub"] .skill-logo,
+.skill-card[data-skill="Expo"] .skill-logo {
+    filter: invert(1);
+}
+
+:root.light-theme .skill-card[data-skill="GitHub"] .skill-logo,
+:root.light-theme .skill-card[data-skill="Expo"] .skill-logo {
+    filter: none;
+}
