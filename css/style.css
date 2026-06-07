@@ -4,29 +4,29 @@
 
 /* 1. Core Variables & Theme Setup */
 :root {
-    --primary-color: #EB5939;
-    --primary-hover: #D44E30;
-    --primary-light: #FDF1EE;
-    --primary-border: #F5B8AC;
+    --primary-color: #8B7BF9;
+    --primary-hover: #7362E3;
+    --primary-light: rgba(139, 123, 249, 0.1);
+    --primary-border: #9D8FFF;
     
-    --experience-border: #EB5939;
-    --experience-bg: #FDF1EE;
+    --experience-border: #8B7BF9;
+    --experience-bg: rgba(139, 123, 249, 0.08);
     
-    --bg-color: #0D0D0D;
-    --bg-alt: #141414;
-    --footer-bg: #080808;
+    --bg-color: #0A0516;
+    --bg-alt: #120C24;
+    --footer-bg: #06030D;
     
-    --text-color: #B8AC99;
-    --text-muted: #8A7F70;
-    --text-light: #5C5348;
-    --text-heading: #E8DDD0;
+    --text-color: #A29BB2;
+    --text-muted: #7A728A;
+    --text-light: #5A526B;
+    --text-heading: #FFFFFF;
     
-    --border-color: #2A2A2A;
-    --card-bg: #1A1A1A;
-    --card-hover-shadow: rgba(0, 0, 0, 0.4);
-    --grid-dot-color: rgba(255, 255, 255, 0.15);
-    --header-bg: rgba(13, 13, 13, 0.9);
-    --input-bg: #1A1A1A;
+    --border-color: #241A38;
+    --card-bg: #140D24;
+    --card-hover-shadow: rgba(139, 123, 249, 0.15);
+    --grid-dot-color: rgba(139, 123, 249, 0.15);
+    --header-bg: rgba(10, 5, 22, 0.9);
+    --input-bg: #1A122E;
     
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Outfit', sans-serif;
@@ -36,27 +36,27 @@
 }
 
 :root.light-theme {
-    --bg-color: #F8F9FA;
+    --bg-color: #FAF9FD;
     --bg-alt: #FFFFFF;
-    --footer-bg: #111111;
+    --footer-bg: #120C24;
     
-    --text-color: #333333;
-    --text-muted: #555555;
-    --text-light: #777777;
-    --text-heading: #0D0D0D;
+    --text-color: #433D52;
+    --text-muted: #645F75;
+    --text-light: #8E8A9F;
+    --text-heading: #170F26;
     
-    --border-color: #E2E8F0;
+    --border-color: #E7E4F2;
     --card-bg: #FFFFFF;
-    --card-hover-shadow: rgba(0, 0, 0, 0.05);
-    --grid-dot-color: rgba(235, 89, 57, 0.1);
-    --header-bg: rgba(255, 255, 255, 0.9);
-    --input-bg: #F1F3F5;
+    --card-hover-shadow: rgba(139, 123, 249, 0.08);
+    --grid-dot-color: rgba(139, 123, 249, 0.35);
+    --header-bg: rgba(250, 249, 253, 0.9);
+    --input-bg: #F2F0F7;
     
-    --primary-light: #FFF0ED;
-    --primary-border: #FFD2C9;
+    --primary-light: #F4F1FE;
+    --primary-border: #D9D2FE;
     
-    --experience-border: #EB5939;
-    --experience-bg: #FFF0ED;
+    --experience-border: #8B7BF9;
+    --experience-bg: #F4F1FE;
 }
 
 /* 2. Global Resets */
@@ -156,13 +156,13 @@ a {
 }
 
 .btn-dark:hover {
-    background-color: #B8AC99;
+    background-color: var(--text-color);
 }
 
 /* Purple bg, white text */
 .btn-solid {
     background-color: var(--primary-color);
-    color: #E8DDD0;
+    color: #FFFFFF;
     border-color: var(--primary-color);
 }
 
@@ -257,7 +257,7 @@ a {
 }
 
 .nav-link:hover {
-    color: #E8DDD0;
+    color: var(--text-heading);
 }
 
 .nav-link:hover::after {
@@ -282,7 +282,7 @@ a {
 .hamburger-menu .bar {
     width: 25px;
     height: 2px;
-    background-color: #E8DDD0;
+    background-color: var(--text-heading);
     transition: var(--transition-smooth);
 }
 
@@ -366,10 +366,26 @@ a {
 .about-portrait {
     width: 100%;
     height: auto;
-    display: block;
     object-fit: cover;
     object-position: top;
     max-height: 540px;
+}
+
+/* Theme-specific portrait display */
+.portrait-light {
+    display: none;
+}
+
+.portrait-dark {
+    display: block;
+}
+
+:root.light-theme .portrait-light {
+    display: block;
+}
+
+:root.light-theme .portrait-dark {
+    display: none;
 }
 
 .about-content {
@@ -805,7 +821,7 @@ a {
 /* 12. Footer Section */
 .footer-section {
     background-color: var(--footer-bg);
-    color: #E8DDD0;
+    color: #F3EEFC;
 }
 
 .footer-main {
@@ -813,7 +829,7 @@ a {
 }
 
 .footer-title {
-    color: #E8DDD0;
+    color: #F3EEFC;
     font-size: 2.25rem;
     font-weight: 800;
     letter-spacing: -0.03em;
@@ -830,7 +846,7 @@ a {
 .footer-subtitle {
     font-size: 0.95rem;
     font-weight: 700;
-    color: #E8DDD0;
+    color: #F3EEFC;
     margin-bottom: 1.25rem;
 }
 
@@ -866,15 +882,16 @@ a {
 
 .btn-social-outline {
     background-color: transparent;
-    color: #E8DDD0;
-    border: 1.5px solid #B8AC99;
+    color: #F3EEFC;
+    border: 1.5px solid #5A4E75;
     padding: 0.45rem 1.5rem;
     font-size: 0.875rem;
 }
 
 .btn-social-outline:hover {
-    background-color: #1A1A1A;
-    color: var(--footer-bg);
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    border-color: var(--primary-color);
 }
 
 .footer-bottom {

@@ -12,7 +12,7 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script>
         if (localStorage.getItem('portfolio-theme') === 'light') {
             document.documentElement.classList.add('light-theme');
@@ -63,7 +63,8 @@
     <section class="about-section" id="about">
         <div class="container about-container">
             <div class="about-image-wrapper">
-                <img src="assets/portrait.png" alt="Claire Cruz Portrait" class="about-portrait">
+                <img src="assets/portrait.png" alt="Claire Cruz Portrait" class="about-portrait portrait-light">
+                <img src="assets/portrait-2.png" alt="Claire Cruz Portrait" class="about-portrait portrait-dark">
             </div>
             <div class="about-content">
                 <p class="about-text scroll-reveal">
@@ -143,10 +144,10 @@
                 <div class="work-status-card scroll-reveal">
                     <div class="work-icon-wrapper">
                         <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M26 4L36 18H30V28H22V18H16L26 4Z" stroke="#7F56D9" stroke-width="3" stroke-linejoin="round" fill="none"/>
-                            <path d="M22 28H30V28C30 28 32 30 32 32H20C20 30 22 28 22 28Z" stroke="#7F56D9" stroke-width="3" stroke-linejoin="round" fill="none"/>
-                            <rect x="20" y="32" width="12" height="8" rx="0" stroke="#7F56D9" stroke-width="3" fill="none"/>
-                            <line x1="26" y1="10" x2="26" y2="18" stroke="#7F56D9" stroke-width="3"/>
+                            <path d="M26 4L36 18H30V28H22V18H16L26 4Z" stroke="var(--primary-color)" stroke-width="3" stroke-linejoin="round" fill="none"/>
+                            <path d="M22 28H30V28C30 28 32 30 32 32H20C20 30 22 28 22 28Z" stroke="var(--primary-color)" stroke-width="3" stroke-linejoin="round" fill="none"/>
+                            <rect x="20" y="32" width="12" height="8" rx="0" stroke="var(--primary-color)" stroke-width="3" fill="none"/>
+                            <line x1="26" y1="10" x2="26" y2="18" stroke="var(--primary-color)" stroke-width="3"/>
                         </svg>
                     </div>
                     <h3 class="work-title">Graphic Design</h3>
