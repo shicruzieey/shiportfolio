@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initThemeToggle();
     initGalleryCarousel();
+    initGalleryLightbox();
 });
 
 /**
@@ -200,3 +201,38 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.textContent = isHidden ? 'View Less' : 'View More';
     });
 });
+
+/**
+ * Gallery Lightbox
+ */
+function initGalleryLightbox() {
+    // Create lightbox overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'lightbox-overlay';
+    overlay.innerHTML = `
+        <div id="lightbox-inner">
+            <button id="lightbox-close">&#10005;</button>
+            <img id="lightbox-img" src="" alt="">
+        </div>`;
+    document.body.appendChild(overlay);
+
+    // Open on image click
+    document.querySelectorAll('.gallery-section .carousel-slide img').forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => {
+            document.getElementById('lightbox-img').src = img.src;
+            overlay.classList.add('active');
+        });
+    });
+
+    // Close on button or overlay click
+    overlay.addEventListener('click', e => {
+        if (e.target === overlay || e.target.id === 'lightbox-close') {
+            overlay.classList.remove('active');
+        }
+    });
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') overlay.classList.remove('active');
+    });
+}

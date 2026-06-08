@@ -1288,3 +1288,43 @@ a {
 :root.light-theme .skill-card[data-skill="Expo"] .skill-logo {
     filter: none;
 }
+
+/* Lightbox */
+#lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.92);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+#lightbox-overlay.active {
+    display: flex;
+}
+
+#lightbox-inner {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+#lightbox-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    display: block;
+}
+
+#lightbox-close {
+    position: absolute;
+    top: -2rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    line-height: 1;
+}
