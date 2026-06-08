@@ -13,11 +13,6 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
-    <script>
-        if (localStorage.getItem('portfolio-theme') === 'light') {
-            document.documentElement.classList.add('light-theme');
-        }
-    </script>
 </head>
 <body>
 
@@ -33,6 +28,8 @@
                 <a href="#experience" class="nav-link">Experience</a>
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#skills" class="nav-link">Skills</a>
+                <a href="#process" class="nav-link">Design Process</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
                 <a href="#contact" class="nav-link">Contacts</a>
                 <a href="assets/resume/CRUZ_CLAIRE_JESSICA_2026.pdf" target="_blank" class="btn btn-outline btn-resume-nav">Resume</a>
                 <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
@@ -327,7 +324,7 @@
     </section>
 
     <!-- Design Process Section -->
-    <section class="process-section">
+    <section class="process-section" id="process">
         <div class="container">
             <h2 class="section-title">My Design Process</h2>
             <div class="process-grid">
@@ -415,28 +412,28 @@
                                 <h4 class="cert-name">Build Wireframes and Low-Fidelity Prototypes</h4>
                             </div>
                         </li>
-                        <li class="cert-item">
+                        <li class="cert-item cert-hidden" style="display:none;">
                             <span class="cert-date">2025</span>
                             <div class="cert-info">
                                 <span class="cert-provider"><a href="assets/certificates/Hackthon.png" target="_blank">Automate the Future Hackathon <i data-lucide="external-link" class="cert-link-icon"></i></a></span>
                                 <h4 class="cert-name">2nd Runner-Up &amp; Best Presenter — COPIt Mobile App</h4>
                             </div>
                         </li>
-                        <li class="cert-item">
+                        <li class="cert-item cert-hidden" style="display:none;">
                             <span class="cert-date">2025</span>
                             <div class="cert-info">
                                 <span class="cert-provider"><a href="assets/certificates/Probot.png" target="_blank">PROBOT Corp. <i data-lucide="external-link" class="cert-link-icon"></i></a></span>
                                 <h4 class="cert-name">Emerging Technologies and Robotics</h4>
                             </div>
                         </li>
-                        <li class="cert-item">
+                        <li class="cert-item cert-hidden" style="display:none;">
                             <span class="cert-date">2025</span>
                             <div class="cert-info">
                                 <span class="cert-provider"><a href="assets/certificates/UXplus.pdf" target="_blank">UX+ <i data-lucide="external-link" class="cert-link-icon"></i></a></span>
                                 <h4 class="cert-name">UX+ Conference 2025</h4>
                             </div>
                         </li>
-                        <li class="cert-item">
+                        <li class="cert-item cert-hidden" style="display:none;">
                             <span class="cert-date">2023</span>
                             <div class="cert-info">
                                 <span class="cert-provider">PSITE Region 3</span>
@@ -444,31 +441,41 @@
                             </div>
                         </li>
                     </ul>
+                    <button class="cert-view-more btn btn-outline" style="margin-top:1.25rem;">View More</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section class="gallery-section">
+    <section class="gallery-section" id="gallery">
         <div class="container">
-            <div class="gallery-header">
-                <span class="gallery-label">Gallery</span>
-            </div>
-            <div class="gallery-carousel-wrapper">
-                <button class="gallery-btn gallery-prev">&#8592;</button>
-                <div class="gallery-track-outer">
-                    <div class="gallery-track" id="gallery-track">
-                        <img src="assets/gallery/achievement-1.jpeg" alt="Gallery 1" class="gallery-img">
-                        <img src="assets/gallery/achievement-2.jpeg" alt="Gallery 2" class="gallery-img">
-                        <img src="assets/gallery/achievement-3.jpeg" alt="Gallery 3" class="gallery-img">
-                        <img src="assets/gallery/achievement-4.jpeg" alt="Gallery 4" class="gallery-img">
-                        <img src="assets/gallery/achievement-5.jpeg" alt="Gallery 5" class="gallery-img">
-                        <img src="assets/gallery/achievement-6.jpeg" alt="Gallery 6" class="gallery-img">
-                        <img src="assets/gallery/achievement-7.jpeg" alt="Gallery 7" class="gallery-img">
+            <h2 class="section-title">Gallery</h2>
+            <div class="project-carousel">
+                <div class="carousel-track" id="gallery-carousel-track">
+                    <div class="carousel-slide">
+                        <img src="assets/gallery/achievement-1.jpeg" alt="Gallery 1">
+                        <img src="assets/gallery/achievement-2.jpeg" alt="Gallery 2">
+                        <img src="assets/gallery/achievement-3.jpeg" alt="Gallery 3">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="assets/gallery/achievement-4.jpeg" alt="Gallery 4">
+                        <img src="assets/gallery/achievement-5.jpeg" alt="Gallery 5">
+                        <img src="assets/gallery/achievement-6.jpeg" alt="Gallery 6">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="assets/gallery/achievement-7.jpeg" alt="Gallery 7">
                     </div>
                 </div>
-                <button class="gallery-btn gallery-next">&#8594;</button>
+                <div class="carousel-controls">
+                    <button class="carousel-btn gallery-prev-btn">&#8592;</button>
+                    <div class="carousel-dots gallery-dots">
+                        <span class="carousel-dot active"></span>
+                        <span class="carousel-dot"></span>
+                        <span class="carousel-dot"></span>
+                    </div>
+                    <button class="carousel-btn gallery-next-btn">&#8594;</button>
+                </div>
             </div>
         </div>
     </section>

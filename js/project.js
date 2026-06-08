@@ -87,6 +87,13 @@ function initThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
     if (!themeToggle) return;
 
+    const stored = localStorage.getItem('portfolio-theme');
+    if (stored === 'dark') {
+        document.documentElement.classList.remove('light-theme');
+    } else {
+        document.documentElement.classList.add('light-theme');
+    }
+
     themeToggle.addEventListener('click', () => {
         const isLight = document.documentElement.classList.toggle('light-theme');
         localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');

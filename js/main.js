@@ -18,6 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 function initThemeToggle() {
     const toggleButtons = document.querySelectorAll('#theme-toggle');
+
+    // Default is light — apply dark only if stored
+    const stored = localStorage.getItem('portfolio-theme');
+    if (stored === 'dark') {
+        document.documentElement.classList.remove('light-theme');
+    } else {
+        document.documentElement.classList.add('light-theme');
+    }
+
     toggleButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const isLight = document.documentElement.classList.toggle('light-theme');
@@ -112,16 +121,82 @@ document.addEventListener('DOMContentLoaded', () => {
  * Gallery Carousel
  */
 function initGalleryCarousel() {
-    const track = document.getElementById('gallery-track');
+    const track = document.getElementById('gallery-carousel-track');
     if (!track) return;
 
-    const scrollAmount = 280;
+    const isMobile = () => window.innerWidth <= 768;
+    let current = 0;
 
-    document.querySelector('.gallery-prev')?.addEventListener('click', () => {
-        track.parentElement.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    function buildSlides() {
+        const allImgs = Array.from(track.querySelectorAll('.carousel-slide img'));
+        const perSlide = isMobile() ? 2 : 3;
+        track.innerHTML = '';
+
+        for (let i = 0; i < allImgs.length; i += perSlide) {
+            const slide = document.createElement('div');
+            slide.className = 'carousel-slide';
+            allImgs.slice(i, i + perSlide).forEach(img => slide.appendChild(img.cloneNode(true)));
+            track.appendChild(slide);
+        }
+
+        const dotsContainer = document.querySelector('.gallery-dots');
+        if (dotsContainer) {
+            const slides = track.querySelectorAll('.carousel-slide');
+            dotsContainer.innerHTML = Array.from(slides).map((_, i) =>
+                `<span class="carousel-dot${i === 0 ? ' active' : ''}"></span>`
+            ).join('');
+            dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, i) =>
+                dot.addEventListener('click', () => goTo(i))
+            );
+        }
+        goTo(0);
+    }
+
+    function goTo(index) {
+        const slides = track.querySelectorAll('.carousel-slide');
+        current = Math.max(0, Math.min(index, slides.length - 1));
+        track.style.transform = `translateX(-${current * 100}%)`;
+        document.querySelectorAll('.gallery-dots .carousel-dot').forEach((d, i) =>
+            d.classList.toggle('active', i === current)
+        );
+    }
+
+    document.querySelector('.gallery-prev-btn')?.addEventListener('click', () => {
+        const slides = track.querySelectorAll('.carousel-slide');
+        goTo(current === 0 ? slides.length - 1 : current - 1);
     });
 
-    document.querySelector('.gallery-next')?.addEventListener('click', () => {
-        track.parentElement.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    document.querySelector('.gallery-next-btn')?.addEventListener('click', () => {
+        const slides = track.querySelectorAll('.carousel-slide');
+        goTo(current === slides.length - 1 ? 0 : current + 1);
     });
+
+    track.addEventListener('touchstart', e => { track._startX = e.touches[0].clientX; });
+    track.addEventListener('touchend', e => {
+        const diff = track._startX - e.changedTouches[0].clientX;
+        const slides = track.querySelectorAll('.carousel-slide');
+        if (Math.abs(diff) > 50) {
+            diff > 0
+                ? goTo(current === slides.length - 1 ? 0 : current + 1)
+                : goTo(current === 0 ? slides.length - 1 : current - 1);
+        }
+    });
+
+    buildSlides();
+    window.addEventListener('resize', buildSlides);
 }
+
+/**
+ * Certificates View More Toggle
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelector('.cert-view-more');
+    const hidden = document.querySelectorAll('.cert-hidden');
+    if (!btn || !hidden.length) return;
+
+    btn.addEventListener('click', () => {
+        const isHidden = hidden[0].style.display === 'none';
+        hidden.forEach(el => el.style.display = isHidden ? 'flex' : 'none');
+        btn.textContent = isHidden ? 'View Less' : 'View More';
+    });
+});
